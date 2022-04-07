@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p(id=info) rows: `#{query.rows}`<br>cols: `#{query.cols}
+  - var rows = Number(query.rows); var cols = Number(query.cols);
+  if !Number.isInteger(rows) || !Number.isInteger(cols)
+    p Either rows or columns isn't an integer. Please request an integer.
+  else if rows<1 || rows>10
+    p row index out of range.  Please select within the range 1-10
+  else if cols<1 || cols>10
+    p column index out of range.  Please select within the range 1-10
+  else
+    table#outer
+      - for(let i=0; i<rows; i++) {
+        tr#middle
+          - for(let j=0; j<cols; j++) {
+              td= (rows+cols)%rows
+          - }
+      - }
+      

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names = ['/images/farmhand.jpg','/images/farmhand2.jpg','/images/farmhand3.jpg','/images/farmhand4.jpg','/images/farmhand5.jpg']
+  - for(let i = 0; i<3; i++) {
+  - let index = Math.floor(Math.random()*5); let image = image_names[index];
+  img(src=`${image}`, alt=`${image}`, height=300, width=300)
+  - }

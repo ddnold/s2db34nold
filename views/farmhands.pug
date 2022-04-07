@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{name:'Jerry', age:21, height:68}, {name:'Johnny', age:18, height:54}, {name:'Chad', age:24, height:76}]
+  div(class='container-fluid')
+    div(class='row')
+      each value in results
+        div(class='col-sm-2') Name: #{value.name}<br>Age: #{value.age}<br>Height: #{value.height}
+  

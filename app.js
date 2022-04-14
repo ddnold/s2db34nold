@@ -34,31 +34,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once("open", function(){ 
   console.log("Connection to DB succeeded")}); 
 
-async function recreateDB(){ 
-  // Delete everything 
-  await Farmhand.deleteMany(); 
  
-  let instance1 = new 
-  Farmhand({name:'Jerry', age:21, height:68});
-  instance1.save( function(err,doc) { 
-      if(err) return console.error(err); 
-      console.log("First object saved") 
-  });
-  instance1 = new
-  Farmhand({name:'Johnny', age:18, height:54});
-  instance1.save( function(err,doc) { 
-      if(err) return console.error(err); 
-      console.log("Second object saved") 
-  });
-  instance1 = new
-  Farmhand({name:'Chad', age:24, height:76});
-  instance1.save( function(err,doc) { 
-      if(err) return console.error(err); 
-      console.log("Third object saved") 
-  });
-} 
-let reseed = true; 
-if (reseed) { recreateDB();} 
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

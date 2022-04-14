@@ -1,9 +1,19 @@
 var Farmhand = require('../models/farmhands'); 
  
 // List of all farmhands 
-exports.farmhands_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Farmhands list'); 
+
+    // List of all Farmhands
+exports.farmhands_list = async function(req, res) { 
+    try{ 
+        theFarmhands = await Farmhand.find(); 
+        res.send(theFarmhands); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
+
  
 // for a specific farmhands. 
 exports.farmhands_detail = function(req, res) { 

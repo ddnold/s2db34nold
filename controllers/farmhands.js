@@ -14,6 +14,16 @@ exports.farmhands_list = async function(req, res) {
     }   
 }; 
 
+exports.farmhands_view_all_Page = async function(req, res) { 
+    try{ 
+        theFarmhands = await Farmhand.find(); 
+        res.render('farmhands', { title: 'Farmhand Search Results', results: theFarmhands }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
  
 // for a specific farmhands. 
 exports.farmhands_detail = function(req, res) { 

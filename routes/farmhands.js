@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET Farmhands page */
-router.get('/', function(req, res, next) {
-  res.render('farmhands', { title: 'Search Results ~ Developing Web Apps and Services' });
-});
-
-module.exports = router;
+var express = require('express'); 
+const farmhands_controllers= require('../controllers/farmhands'); 
+var router = express.Router(); 
+ 
+/* GET costumes */ 
+router.get('/', farmhands_controllers.farmhands_view_all_Page); 
+module.exports = router; 

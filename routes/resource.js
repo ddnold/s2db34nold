@@ -25,6 +25,6 @@ router.put('/farmhands/:id', farmhands_controller.farmhands_update_put);
 router.get('/farmhands/:id', farmhands_controller.farmhands_detail); 
  
 // GET request for list of all farmhands items. 
-router.get('/farmhands', farmhands_controller.farmhands_list); 
+router.get('/farmhands', farmhands_controller.farmhands_list);  
  
 module.exports = router; 

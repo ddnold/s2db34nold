@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let farmhandsid = toShow._id 
+  - let farmhandsname = toShow.name
+  - let farmhandsheight = toShow.height 
+  - let farmhandsage = toShow.age
+  div 
+    div.row 
+      div(class='farmhandsAttr mr-3') Farmhands ID is: 
+      div #{farmhandsid} 
+    div.row 
+      div(class='farmhandsAttr mr-3') Farmhands name is: 
+      div #{farmhandsname} 
+    div.row 
+      div(class='farmhandsAttr mr-3') Farmhands height is: 
+      div #{farmhandsheight} 
+    div.row 
+      div(class='farmhandsAttr mr-3') Farmhands age is: 
+      div #{farmhandsage} 

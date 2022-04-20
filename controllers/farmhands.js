@@ -106,15 +106,28 @@ exports.farmhands_update_put = async function(req, res) {
     try { 
         let toUpdate = await Farmhand.findById(req.params.id) 
         // Do updates of properties 
-        if(req.body.name)  
-               toUpdate.name = req.body.name; 
-        if(req.body.cost) toUpdate.age = req.body.age; 
-        if(req.body.size) toUpdate.height = req.body.height; 
+        if(req.body.name) toUpdate.name = req.body.name; 
+        if(req.body.age) toUpdate.age = req.body.age; 
+        if(req.body.height) toUpdate.height = req.body.height; 
         let result = await toUpdate.save(); 
         console.log("Sucess " + result) 
         res.send(result) 
     } catch (err) { 
         res.status(500) 
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`); 
+    } 
+}; 
+
+// Handle building the view for updating a farmhands. 
+// query provides the id 
+exports.farmhands_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await Farmhand.findById(req.query.id) 
+        res.render('farmhandsupdate', { title: 'Farmhands Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
     } 
 }; 

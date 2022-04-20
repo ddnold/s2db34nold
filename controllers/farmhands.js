@@ -23,6 +23,20 @@ exports.farmhands_view_all_Page = async function(req, res) {
         res.status(500); 
         res.send(`{"error": ${err}}`); 
     }   
+};
+
+// Handle building the view for creating a costume. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.farmhands_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('farmhandscreate', { title: 'Farmhands Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
 }; 
 
  // Handle a show one view with id specified by query 
@@ -60,8 +74,9 @@ exports.farmhands_create_post = async function(req, res) {
     // and require that it be a json object 
     // {"costume_type":"goat", "cost":12, "size":"large"} 
     document.name = req.body.name; 
+    document.height = req.body.height; 
     document.age = req.body.age; 
-    document.height = req.body; 
+
     try{ 
         let result = await document.save(); 
         res.send(result); 

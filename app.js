@@ -44,15 +44,15 @@ async function recreateDB(){
       if(err) return console.error(err); 
       console.log("First object saved") 
   });
-  instance1 = new
+  let instance2 = new
   Farmhand({name:'Johnny', age:18, height:54});
-  instance1.save( function(err,doc) { 
+  instance2.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("Second object saved") 
   });
-  instance1 = new
+  let instance3 = new
   Farmhand({name:'Chad', age:24, height:76});
-  instance1.save( function(err,doc) { 
+  instance3.save( function(err,doc) { 
       if(err) return console.error(err); 
       console.log("Third object saved") 
   });

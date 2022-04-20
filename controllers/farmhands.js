@@ -58,9 +58,17 @@ exports.farmhands_create_post = async function(req, res) {
     }   
 }; 
  
-// Handle farmhands delete form on DELETE. 
-exports.farmhands_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Farmhands delete DELETE ' + req.params.id); 
+// Handle Costume delete on DELETE. 
+exports.farmhands_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Farmhand.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 // Handle Costume update form on PUT. 

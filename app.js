@@ -46,7 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const connectionString = process.env.MONGO_CON || 5000;
+const connectionString = process.env.MONGO_CON
 mongoose = require('mongoose'); 
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 

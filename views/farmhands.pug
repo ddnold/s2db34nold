@@ -2,14 +2,22 @@ extends layout
 
 block content
   h1= title
+  - let create = `dispatch(\"/farmhands/create\")`
+  button.btn(class="btn-primary m1-1", onclick=create) Create new
   - var results = results
   div(class='container-fluid')
     div(class='row m-1')
       each value in results
         - let destination = `dispatch(\"/farmhands/update?id=${value._id}\")`
+        - let detail = `dispatch(\"/farmhands/detail?id=${value._id}\")`
+        - let deleted = `dispatch(\"/farmhands/delete?id=${value._id}\")`
+
         div(class='col-sm-2') Name: #{value.name}<br>Age: #{value.age}<br>Height: #{value.height}
           br
-          button.btn(class="btn-primary m1-1", onclick=destination) Update 
+          button.btn(class="btn-primary m1-1", onclick=destination) Update
+          button.btn(class="btn-info m1-1", onclick=detail) Detail 
+          button.btn(class="btn-danger m1-1", onclick=deleted) Delete 
+
 
   script. 
     function dispatch(path){

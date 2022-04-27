@@ -8,7 +8,7 @@ block content
       each value in results
         - let destination = `dispatch(\"/farmhands/update?id=${value._id}\")`
         div(class='col-sm-2') Name: #{value.name}<br>Age: #{value.age}<br>Height: #{value.height}
-          <br>
+          br
           button.btn(class="btn-primary m1-1", onclick=destination) Update 
 
   script. 
